@@ -1,0 +1,68 @@
+---
+title: "ggplot_excersice2"
+output: html_document
+date: "2022-09-20"
+---
+
+library(tidyverse)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+(df <- dplyr::filter(gapminder::gapminder, year == 1992))
+```
+
+
+
+```{r}
+ggplot(df)+
+  geom_point(aes(gdpPercap,lifeExp, size=pop, col=continent))+
+  labs(title = "Gapminder for 1992") + 
+  xlab("Gross Domistic product (log scale)") +
+  scale_x_log10() +
+  ylab("Life Expectancy at birth (years)")
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy),color = "blue")
+```
+
+```{r}
+head(mpg)
+```
+```{r}
+ggplot(mpg)+
+  geom_point(aes(displ,hwy,color=year))+
+  scale_color_viridis_b()
+```
+```{r}
+print(mtcars)
+
+```
+```{r}
+print(as_tibble(mtcars))
+```
+```{r}
+df <- data.frame(abc = 1, xyz = "a")
+df$x
+df[, "xyz"]
+df[, c("abc", "xyz")]
+str(df)
+
+```
+```{r}
+tbl <-tibble(abc=1,xyz="a")
+str(tbl)
+```
+
